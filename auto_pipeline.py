@@ -20,7 +20,7 @@ LISTA_AMOSTRAS = "amostras.lst"
 # Parâmetros
 WIN_W, WIN_H = 40, 80
 NUM_STAGES = 10
-NUM_NEGATIVAS = 100  # Ajuste conforme seu conjunto
+NUM_NEGATIVAS = 242
 
 def garantir_pastas():
     if os.path.exists(PASTA_CLASSIFICADOR):
