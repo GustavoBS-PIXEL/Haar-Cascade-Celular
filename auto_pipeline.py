@@ -1,7 +1,7 @@
-import cv2
 import os
 import shutil
 import subprocess
+import cv2
 
 # Caminhos dos executáveis OpenCV
 OPENCV_CREATESAMPLES = r"C:\opencv\build\x64\vc15\bin\opencv_createsamples.exe"
@@ -20,7 +20,7 @@ LISTA_AMOSTRAS = "amostras.lst"
 # Parâmetros
 WIN_W, WIN_H = 40, 80
 NUM_STAGES = 10
-NUM_NEGATIVAS = 242
+NUM_NEGATIVAS = 242  # Ajuste conforme o número real
 
 def garantir_pastas():
     if os.path.exists(PASTA_CLASSIFICADOR):
@@ -43,25 +43,24 @@ def selecionar_objeto(imagem):
     return (x, y, w, h) if w > 0 and h > 0 else None
 
 def gerar_lista_amostras():
-    print("[Selecionando objetos nas imagens positivas]")
+    print("[Selecionando regiões nas imagens positivas]")
     arquivos = sorted(os.listdir(PASTA_POSITIVAS))
     with open(LISTA_AMOSTRAS, "w") as f:
         for nome in arquivos:
             if not nome.lower().endswith((".jpg", ".jpeg", ".png")):
                 continue
-
             caminho = os.path.join(PASTA_POSITIVAS, nome)
             imagem = cv2.imread(caminho)
             if imagem is None:
+                print(f"❌ Imagem inválida: {nome}")
                 continue
-
             selecao = selecionar_objeto(imagem)
             if selecao is None:
-                print(f"⚠️ Pulando imagem {nome} (nenhuma região selecionada)")
+                print(f"⚠️ Nenhuma seleção válida em {nome}. Pulando.")
                 continue
-
             x, y, w, h = selecao
             f.write(f"{caminho} 1 {x} {y} {w} {h}\n")
+    print("✅ Lista de amostras positivas gerada.")
 
 def gerar_arquivo_vec():
     print("[Gerando arquivo .vec com opencv_createsamples]")
@@ -123,10 +122,11 @@ def treinar_classificador():
         print("✅ Treinamento finalizado. Classificador salvo em:", PASTA_CLASSIFICADOR)
 
 def main():
-    print("[Iniciando pipeline Haar Cascade simplificado]\n")
+    print("[Iniciando pipeline Haar Cascade]\n")
     garantir_pastas()
     gerar_negativas_txt()
     gerar_lista_amostras()
+
     if gerar_arquivo_vec():
         treinar_classificador()
         print("\n✅ Pipeline finalizado!")

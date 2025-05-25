@@ -5,10 +5,10 @@ import os
 
 
 # Caminho para o classificador treinado
-CLASSIFICADOR_PATH = "classificador/cascade.xml"
+CLASSIFICADOR_PATH = "classificador_2/cascade.xml"
 
 # Caminho da imagem de teste
-IMAGEM_TESTE_PATH = "img_teste/img_6.png"  # Altere para o caminho da imagem desejada
+IMAGEM_TESTE_PATH = "img_teste/img_2.png"  # O caminho da imagem desejada
 
 # Dimensão para redimensionar a imagem
 LARGURA_PADRAO = 640
@@ -59,8 +59,8 @@ def testar_classificador():
 
     deteccoes = classificador.detectMultiScale(
         imagem_pre,
-        scaleFactor=1.015,
-        minNeighbors=19,
+        scaleFactor=1.25,
+        minNeighbors=57,
         minSize=(40, 80),
         flags=cv2.CASCADE_SCALE_IMAGE
     )
