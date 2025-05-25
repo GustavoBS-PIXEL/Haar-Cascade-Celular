@@ -63,7 +63,7 @@ git clone https://github.com/seuusuario/haar-cascade-celular.git
 cd haar-cascade-celular
 
 3. Executar o pipeline de treinamento
-Lembre-se de editar o caminho dos executáveis no início do pipeline.py.
+Lembre-se de editar o caminho dos executáveis no início do auto_pipeline.py.
 
 3. Testar com uma imagem
 Após o treinamento, o arquivo cascade.xml será gerado dentro da pasta classificador/.
