@@ -8,7 +8,7 @@ import os
 CLASSIFICADOR_PATH = "classificador_2/cascade.xml"
 
 # Caminho da imagem de teste
-IMAGEM_TESTE_PATH = "img_teste/img_2.png"  # O caminho da imagem desejada
+IMAGEM_TESTE_PATH = "img_teste/img_teste.jpg"  # O caminho da imagem desejada
 
 # Dimensão para redimensionar a imagem
 LARGURA_PADRAO = 640
