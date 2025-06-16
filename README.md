@@ -7,9 +7,9 @@ Este projeto foi realizado em dupla para a disciplina de Visão Computacional.
 
 Objeto detectado: Celular
 
-Total de imagens positivas: 128
+Total de imagens positivas: 171
 
-Total de imagens negativas: 242
+Total de imagens negativas: 300
 
 🧪 Etapas Realizadas
 Coleta de imagens positivas e negativas
@@ -52,8 +52,9 @@ haar-cascade-celular/
 ├── amostras.lst            # Lista de anotações positivas
 ├── negativas.txt           # Lista de imagens negativas
 ├── amostras.vec            # Arquivo de vetores para treinamento
-├── detect_custom.py        # Script de teste/detecção
-├── pipeline.py             # Script de treinamento
+├── auto_pipeline.py        # Script de treinamento
+├── detect_custom.py        # Script de teste/detecção para ser utilizado em uma imagem especifica 
+├── detect_custom_cam.py    # Script de teste/detecção funcionando diretamente com a imagens da webcam, contabilizando os objetos detectados e salvando as detecçoes
 └── README.md
 
 ▶ Como Executar
