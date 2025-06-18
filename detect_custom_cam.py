@@ -3,7 +3,7 @@ import os
 import time
 
 # Caminho para o classificador treinado
-CLASSIFICADOR_PATH = "classificador_2/cascade.xml"
+CLASSIFICADOR_PATH = "classificador_3/cascade.xml"
 
 # Dimensão para redimensionar o frame da webcam
 LARGURA_PADRAO = 640
@@ -63,9 +63,9 @@ def main():
 
         deteccoes = classificador.detectMultiScale(
             imagem_pre,
-            scaleFactor=1.25,
-            minNeighbors=57,
-            minSize=(40, 80),
+            scaleFactor=1.40,
+            minNeighbors= 67,
+            minSize=(60, 80),
             flags=cv2.CASCADE_SCALE_IMAGE
         )
 
